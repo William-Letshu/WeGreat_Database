@@ -32,7 +32,8 @@ CREATE TABLE bookings (
     user_id INTEGER REFERENCES users(id),
     service_id INTEGER REFERENCES services(id),
     booking_date TIMESTAMP NOT NULL,
-    booking_status VARCHAR(50) NOT NULL
+    booking_status VARCHAR(50) NOT NULL,
+    booking_rating INTEGER check (booking_rating between 0 and 5),
 );
 
 -- Indexes to improve read performance
