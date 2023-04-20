@@ -2,9 +2,11 @@ CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     username VARCHAR(255) UNIQUE NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
     first_name VARCHAR(255) NOT NULL,
     second_names VARCHAR(255),
     surname VARCHAR(255) NOT NULL,
+    identity_document VARCHAR(255) UNIQUE NOT NULL,
     disabled BOOLEAN NOT NULL DEFAULT false
 );
 
@@ -12,6 +14,7 @@ CREATE TABLE merchants (
     id SERIAL PRIMARY KEY,
     username VARCHAR(255) UNIQUE NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
     first_name VARCHAR(255) NOT NULL,
     second_names VARCHAR(255),
     surname VARCHAR(255) NOT NULL,
