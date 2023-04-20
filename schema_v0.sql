@@ -40,9 +40,9 @@ CREATE TABLE bookings (
 );
 
 -- Indexes to improve read performance
-CREATE INDEX idx_users_identity_number ON users(identity_number);
-CREATE INDEX idx_users_email_address ON users(email_address);
-CREATE INDEX idx_merchants_identity_document ON merchants(identity_document);
+CREATE INDEX idx_users_identity_document ON users(identity_document);
+CREATE INDEX idx_users_email ON users(email);
+CREATE INDEX idx_merchants_email ON merchants(email);
 CREATE INDEX idx_services_merchant_id ON services(merchant_id);
 CREATE INDEX idx_bookings_user_id ON bookings(user_id);
 CREATE INDEX idx_bookings_service_id ON bookings(service_id);
