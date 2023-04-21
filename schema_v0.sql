@@ -39,6 +39,22 @@ CREATE TABLE bookings (
     booking_rating INTEGER check (booking_rating between 0 and 5),
 );
 
+CREATE TABLE conversations (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id),
+    merchant_id INTEGER REFERENCES merchants(id)
+);
+
+CREATE TABLE messages (
+    id SERIAL PRIMARY KEY,
+    conversation_id INTEGER REFERENCES conversations(id),
+    sender_type VARCHAR(50) NOT NULL, -- 'user' or 'merchant'
+    sender_id INTEGER NOT NULL, -- either user_id or merchant_id
+    content TEXT NOT NULL,
+    timestamp TIMESTAMP NOT NULL
+);
+
+
 -- Indexes to improve read performance
 CREATE INDEX idx_users_identity_document ON users(identity_document);
 CREATE INDEX idx_users_email ON users(email);
