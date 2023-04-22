@@ -9,8 +9,8 @@ CREATE TABLE users (
     identity_document VARCHAR(255) UNIQUE NOT NULL,
     verified BOOLEAN NOT NULL DEFAULT false,
     dob DATE NOT NULL,
-    verification_code VARCHAR(255) UNIQUE,
-    password_reset_code VARCHAR(255) UNIQUE,
+    verification_code VARCHAR(255),
+    password_reset_code VARCHAR(255),
     disabled BOOLEAN NOT NULL DEFAULT false
 );
 
@@ -26,8 +26,8 @@ CREATE TABLE merchants (
     police_clearance BOOLEAN NOT NULL DEFAULT false,
     verified BOOLEAN NOT NULL DEFAULT false,
     dob DATE NOT NULL,
-    verification_code VARCHAR(255) UNIQUE,
-    password_reset_code VARCHAR(255) UNIQUE
+    verification_code VARCHAR(255),
+    password_reset_code VARCHAR(255)
 );
 
 
