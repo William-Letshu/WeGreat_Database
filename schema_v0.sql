@@ -7,6 +7,10 @@ CREATE TABLE users (
     second_names VARCHAR(255),
     surname VARCHAR(255) NOT NULL,
     identity_document VARCHAR(255) UNIQUE NOT NULL,
+    verified BOOLEAN NOT NULL DEFAULT false,
+    dob DATE NOT NULL,
+    verification_code VARCHAR(255) UNIQUE,
+    password_reset_code VARCHAR(255) UNIQUE,
     disabled BOOLEAN NOT NULL DEFAULT false
 );
 
@@ -19,8 +23,13 @@ CREATE TABLE merchants (
     second_names VARCHAR(255),
     surname VARCHAR(255) NOT NULL,
     description TEXT,
-    police_clearance BOOLEAN NOT NULL DEFAULT false
+    police_clearance BOOLEAN NOT NULL DEFAULT false,
+    verified BOOLEAN NOT NULL DEFAULT false,
+    dob DATE NOT NULL,
+    verification_code VARCHAR(255) UNIQUE,
+    password_reset_code VARCHAR(255) UNIQUE
 );
+
 
 CREATE TABLE services (
     id SERIAL PRIMARY KEY,
