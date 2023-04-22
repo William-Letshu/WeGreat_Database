@@ -33,6 +33,11 @@ The `User` table stores information about the users of the application.
 | current_address | string | Current address of the user        |
 | identity_number | string | Unique identity number of the user |
 | hashed_password | string | Hashed password of the user        |
+| dob         | date   | Date of birth of user                  |
+| verification_code | varchar | Verification code               |
+| password_reset_code | varchar | Password reset code of the user |
+| verified    | boolean | Status of user verification           |
+| disabled.   | boolean | Status of user account.               |
 
 ### Merchant
 
@@ -44,6 +49,11 @@ The `Merchant` table stores information about the merchants that provide service
 | name        | string | Name of the merchant                   |
 | description | string | Description of the merchant's services |
 | address     | string | Address of the merchant                |
+| dob         | date   | Date of birth of merchant              |
+| verification_code | varchar | Verification code               |
+| password_reset_code | varchar | Password reset code of the user |
+| verified    | boolean | Status of merchant verification           |
+| disabled.   | boolean | Status of merchant account.               |
 
 ### Service
 
