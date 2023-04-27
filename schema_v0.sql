@@ -28,6 +28,7 @@ CREATE TABLE merchants (
     police_clearance BOOLEAN NOT NULL DEFAULT false,
     verified BOOLEAN NOT NULL DEFAULT false,
     dob DATE NOT NULL,
+    phone_number VARCHAR(255),
     verification_code VARCHAR(255),
     password_reset_code VARCHAR(255)
 );
@@ -47,7 +48,7 @@ CREATE TABLE bookings (
     service_id INTEGER REFERENCES services(id),
     booking_date TIMESTAMP NOT NULL,
     booking_status VARCHAR(50) NOT NULL,
-    booking_rating INTEGER check (booking_rating between 0 and 5),
+    booking_rating INTEGER check (booking_rating between 0 and 5)
 );
 
 CREATE TABLE conversations (
