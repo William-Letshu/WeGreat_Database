@@ -1,8 +1,7 @@
 # Database Design
 ## This repo is setup so that we can test our database
 
-This document outlines the database design for the SaaS backend project. The database schema consists of four main tables: `User`, `Merchant`, `Service`, and `Booking`.
-
+This document outlines the database design for the SaaS backend project. The database schema consists of several tables including `users`, `merchants`, `services`, `bookings`, `conversations`, `messages`, `stories`, `skills`, `merchant_skills`, and `service_images`.
 
 ## Prerequisites
 
@@ -17,72 +16,63 @@ This document outlines the database design for the SaaS backend project. The dat
 1. Open a terminal or command prompt.
 2. Start the PostgreSQL interactive terminal by running the following command:
 
-
 ## Table Descriptions
 
-### User
+### Users
 
-The `User` table stores information about the users of the application. 
+The `Users` table stores information about the users of the application. 
 
-| Column          | Type   | Description                        |
-|-----------------|--------|------------------------------------|
-| id              | int    | Primary key for the user           |
-| first_name      | string | First name of the user             |
-| last_name       | string | Last name of the user              |
-| email_address   | string | Email address of the user          |
-| current_address | string | Current address of the user        |
-| identity_number | string | Unique identity number of the user |
-| hashed_password | string | Hashed password of the user        |
-| dob         | date   | Date of birth of user                  |
-| verification_code | varchar | Verification code               |
-| password_reset_code | varchar | Password reset code of the user |
-| verified    | boolean | Status of user verification           |
-| disabled.   | boolean | Status of user account.               |
+| Column | Type | Description |
+|---|---|---|
+| id | SERIAL | Primary key for the user |
+| username | VARCHAR | Username of the user |
+| email | VARCHAR | Email address of the user |
+| password | VARCHAR | Hashed password of the user |
+| first_name | VARCHAR | First name of the user |
+| second_names | VARCHAR | Middle name(s) of the user |
+| surname | VARCHAR | Last name of the user |
+| identity_document | VARCHAR | Unique identity document of the user |
+| verified | BOOLEAN | Verification status of the user |
+| dob | DATE | Date of birth of the user |
+| phone_number | VARCHAR | Phone number of the user |
+| verification_code | VARCHAR | User's verification code |
+| password_reset_code | VARCHAR | User's password reset code |
+| disabled | BOOLEAN | Whether the user account is disabled |
+| profile_picture | VARCHAR | URL to the user's profile picture |
+| merchant_id | INTEGER | ID of the merchant related to the user|
 
-### Merchant
+### Merchants
 
-The `Merchant` table stores information about the merchants that provide services in the application.
+The `Merchants` table stores information about the merchants that provide services in the application.
 
-| Column      | Type   | Description                            |
-|-------------|--------|----------------------------------------|
-| id          | int    | Primary key for the merchant           |
-| name        | string | Name of the merchant                   |
-| description | string | Description of the merchant's services |
-| address     | string | Address of the merchant                |
-| dob         | date   | Date of birth of merchant              |
-| verification_code | varchar | Verification code               |
-| password_reset_code | varchar | Password reset code of the user |
-| verified    | boolean | Status of merchant verification           |
-| disabled.   | boolean | Status of merchant account.               |
+| Column | Type | Description |
+|---|---|---|
+| id | SERIAL | Primary key for the merchant |
+| username | VARCHAR | Username of the merchant |
+| email | VARCHAR | Email address of the merchant |
+| password | VARCHAR | Hashed password of the merchant |
+| first_name | VARCHAR | First name of the merchant |
+| second_names | VARCHAR | Middle name(s) of the merchant |
+| surname | VARCHAR | Last name of the merchant |
+| description | TEXT | Description of the merchant's services |
+| police_clearance | BOOLEAN | Whether the merchant has police clearance |
+| verified | BOOLEAN | Verification status of the merchant |
+| dob | DATE | Date of birth of the merchant |
+| phone_number | VARCHAR | Phone number of the merchant |
+| verification_code | VARCHAR | Merchant's verification code |
+| password_reset_code | VARCHAR | Merchant's password reset code |
+| profile_picture | VARCHAR | URL to the merchant's profile picture |
+| user_id | INTEGER | ID of the user related to the merchant |
+| location | VARCHAR | Location of the merchant |
 
-### Service
+### Services
 
-The `Service` table stores information about the individual services provided by merchants.
+The `Services` table stores information about the individual services provided by merchants.
 
-| Column      | Type   | Description                       |
-|-------------|--------|-----------------------------------|
-| id          | int    | Primary key for the service       |
-| name        | string | Name of the service               |
-| description | string | Description of the service        |
-| price       | float  | Price of the service              |
-| merchant_id | int    | Foreign key referencing Merchant  |
-
-### Booking
-
-The `Booking` table stores information about bookings made by users for specific services.
-
-| Column     | Type  | Description                        |
-|------------|-------|------------------------------------|
-| id         | int   | Primary key for the booking        |
-| user_id    | int   | Foreign key referencing User       |
-| service_id | int   | Foreign key referencing Service    |
-| start_time | datetime | Start time of the booked service |
-| end_time   | datetime | End time of the booked service   |
-| status     | string | Status of the booking             |
-
-## Relationships
-
-- A `User` can have multiple `Booking` records.
-- A `Merchant` can have multiple `Service` records.
-- A `Service` can have multiple `Booking` records.
-- A `Booking` is associated with one `User` and one `Service`.
+| Column | Type | Description |
+|---|---|---|
+| id | SERIAL | Primary key for the service |
+| merchant_id | INTEGER | ID of the merchant that provides the service |
+| service_name | VARCHAR | Name of the service |
+| description | TEXT | Description of the service |
+| price | DECIMAL | Price of the
