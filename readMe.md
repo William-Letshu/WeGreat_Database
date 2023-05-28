@@ -76,3 +76,15 @@ The `Services` table stores information about the individual services provided b
 | service_name | VARCHAR | Name of the service |
 | description | TEXT | Description of the service |
 | price | DECIMAL | Price of the
+
+
+## Docker Container
+
+Once you've started Docker then run the following commands:
+
+```bash
+
+docker build -t saas_db_image .
+docker run --name saas_db_container -d saas_db_image
+
+```
